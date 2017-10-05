@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -33,7 +34,7 @@ public class TelaDaProva  extends  JFrame {
 		
 		JPanel westPanel = new JPanel();
 		westPanel.setBackground(Color.darkGray);
-		westPanel.setPreferredSize(new Dimension(120,0));
+		westPanel.setPreferredSize(new Dimension(150,0));
 		contentPane.add(westPanel, BorderLayout.WEST);
  
 
@@ -120,7 +121,7 @@ public class TelaDaProva  extends  JFrame {
 		
 		
 		JPanel eastPanel = new JPanel();
-		eastPanel.setPreferredSize(new Dimension(370,0));
+		eastPanel.setPreferredSize(new Dimension(340,0));
 		contentPane.add(eastPanel,BorderLayout.EAST);
 		
 		JLabel nameLabel =  new  JLabel ();
@@ -149,21 +150,26 @@ public class TelaDaProva  extends  JFrame {
 		eastPanel.add(salva);
 		contentPane.add(westPanel, BorderLayout.WEST);
 		
-        String [] columnNames = { " Nome " ," CPF " , " E-mail " };
+//        Object [] columnNames = { " Nome " ," CPF " , " E-mail " };
   		
   		Object [] [] tableData = {
   				{ " João " , " 111.111.111-11 " , " joao@gmail.com " },
   				{ " Maria " , " 222.222.222-22 " , " maria@gmail.com " },
-  				{ " José " , " 333.333.333-33 " , " jose@gmail.com " },
+  				{ " José " , " 333.333.333-33 " , " jose@gmail.com " }
   				
   		};
+  		
+  		 Object [] columnNames = { " Nome " ," CPF " , " E-mail " };
+  		
+  		 
+  		JTable table = new JTable(tableData,columnNames);
+		table.setFillsViewportHeight(true);
 		
-  		
-  		JTable userTable =  new  JTable (tableData, columnNames);
-  		
-  	
-  		userTable.setPreferredSize ( new Dimension( 300 , 130 ));
-  		eastPanel.add(userTable);
+		JScrollPane tableScroll = new JScrollPane(table);
+		tableScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		
+		tableScroll.setPreferredSize(new Dimension(300,130));
+  		eastPanel.add(tableScroll);
   		
   		
 		
